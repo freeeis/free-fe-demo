@@ -1,10 +1,10 @@
 {
-  "name": "free-fe-demo-pro",
+  "name": "free-fe-demo",
   "version": "0.0.1",
-  "description": "The professional version demo module of the FREE frontend.",
+  "description": "The demo module of the FREE frontend.",
   "main": "index.js",
   "author": "zhiquan",
   "license": "UNLICENSED",
   "private": false,
-  "repository": "git@github.com:freeeis/free-fe-demo.git  "
+  "repository": "git@github.com:freeeis/free-fe-demo.git"
 }
