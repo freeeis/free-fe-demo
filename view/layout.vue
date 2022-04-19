@@ -150,7 +150,7 @@ export default {
         });
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$store.commit('app/SET_CRUMBS', undefined);
   },
 };
