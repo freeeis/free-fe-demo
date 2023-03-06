@@ -1,9 +1,9 @@
 {
   "name": "free-fe-demo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The demo module of the FreeEIS frontend.",
   "main": "index.js",
   "author": "zhiquan",
-  "license": "MIT",
+  "license": "GPL-1.0-or-later",
   "private": false
 }
