@@ -21,7 +21,7 @@
             <q-icon class="avatar q-mr-sm" name="fas fa-user-tie" size="md" />
             <span class="user-name ellipsis q-ml-xs q-mr-md">
               {{userName}}
-              <div class="date-label">{{now | normalDate}}</div>
+              <div class="date-label">{{now}}</div>
             </span>
             <e-icon class="user-profile-menu-icon"
               name="keyboard_arrow_down"></e-icon>
@@ -85,6 +85,7 @@
 
 <script>
 import CFooter from './components/footer';
+import useAppStore from '@/stores/app';
 
 export default {
   name: 'DemoProLayout',
@@ -114,10 +115,10 @@ export default {
       return new Date().toLocaleDateString();
     },
     userName() {
-      if (this.ctx.modules.passport
-        && this.ctx.modules.passport.store.state.passport.user
-        && this.ctx.modules.passport.store.state.passport.user.Name) {
-        return this.ctx.modules.passport.store.state.passport.user.Name;
+      if (this.ctx.modules.account
+        && this.ctx.modules.account.store.user
+        && this.ctx.modules.account.store.user.Name) {
+        return this.ctx.modules.account.store.user.Name;
       }
 
       return '未完善信息用户';
@@ -140,18 +141,19 @@ export default {
   },
   methods:{
     logoutClicked() {
-      this.ctx.modules.passport && this.ctx.modules.passport
+      this.ctx.modules.account && this.ctx.modules.account
         .utils.logout()
         .then(() => {
           // clear info to store
-          this.ctx.modules.passport.store.commit('passport/SET_USER', {});
-          this.ctx.modules.passport.store.commit('passport/SET_TOKEN', {});
+          this.ctx.modules.account.store.SET_USER({});
+          this.ctx.modules.account.store.SET_TOKEN('');
           this.$router.replace('/login');
         });
     },
   },
   beforeUnmount() {
-    this.$store.commit('app/SET_CRUMBS', undefined);
+    const store = useAppStore();
+    store.SET_CRUMBS(undefined);
   },
 };
 </script>
